@@ -50,18 +50,26 @@
 
 .hero-logo {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  background: #000;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 30px;
+  gap: 12px;
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+  padding: 0;
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   letter-spacing: -0.01em;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
   transition: transform 0.3s ease;
+}
+
+.hero-logo span {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-logo:hover {
@@ -78,7 +86,10 @@
   font-size: 3.2rem;
   font-weight: 500;
   line-height: 1.15;
-  color: var(--text-primary);
+  background: linear-gradient(135deg, #0f172a 20%, var(--accent-color) 60%, #4338ca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 24px;
   letter-spacing: -0.03em;
 }
@@ -87,7 +98,8 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 6px 16px;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -96,7 +108,7 @@
 }
 
 .early-access-pill .btn-dark {
-  background: #000;
+  background: var(--accent-color);
   color: #fff;
   padding: 4px 10px;
   border-radius: 12px;
@@ -114,6 +126,11 @@
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .hero-subtext a {
@@ -149,10 +166,18 @@
   margin-bottom: 24px;
 }
 
+.hero-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 12px;
+}
+
 .chat-pill-card:focus-within {
   transform: translateY(-2px);
   box-shadow: var(--pill-shadow-focus);
-  border-color: rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 105, 200, 0.4);
 }
 
 /* Row 1: Search icon, Input field, and Send button */
@@ -172,6 +197,8 @@
 
 .chat-input-field {
   flex-grow: 1;
+  width: 0;
+  min-width: 0;
   background: transparent;
   border: none;
   outline: none;
@@ -187,7 +214,7 @@
 }
 
 .send-btn-circle {
-  background: #000;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #0052a3 100%);
   color: #fff;
   border: none;
   outline: none;
@@ -204,11 +231,12 @@
 
 .send-btn-circle:hover:not(:disabled) {
   transform: scale(1.05);
-  background: var(--accent-hover);
+  background: linear-gradient(135deg, var(--accent-hover) 0%, #003d7a 100%);
+  box-shadow: 0 4px 12px rgba(0, 105, 200, 0.3);
 }
 
 .send-btn-circle:disabled {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.04);
   color: var(--text-muted);
   cursor: not-allowed;
 }
@@ -218,7 +246,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-top: 1px solid rgba(0, 105, 200, 0.08);
   padding-top: 10px;
   overflow-x: auto;
   scrollbar-width: none; /* Hide standard firefox scrollbar */
@@ -232,8 +260,8 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  background: rgba(0, 105, 200, 0.02);
+  border: 1px solid rgba(0, 105, 200, 0.06);
   color: var(--text-secondary);
   font-size: 0.8rem;
   font-family: var(--font-body);
@@ -245,11 +273,11 @@
 }
 
 .context-pill-option:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, rgba(0, 105, 200, 0.08) 0%, rgba(147, 51, 234, 0.05) 100%);
+  border-color: rgba(0, 105, 200, 0.2);
   color: var(--text-primary);
   transform: translateY(-1.5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 12px rgba(0, 105, 200, 0.05);
 }
 
 /* Watch Trailer button styling */
@@ -257,8 +285,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.02);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 8px 16px;
   border-radius: 16px;
   font-size: 0.85rem;
@@ -271,16 +299,15 @@
 }
 
 .watch-trailer-btn:hover {
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.06);
   transform: translateY(-1px);
 }
-
 .watch-trailer-btn img {
   width: 20px;
   height: 20px;
-  border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
 }
+
 
 /* ==========================================================================
    ACTIVE CONVERSATION LAYOUT (Seamless lift & shift transitions)
@@ -296,7 +323,7 @@
   background: rgba(251, 251, 253, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 105, 200, 0.06);
   z-index: 100;
   animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -313,7 +340,7 @@
 }
 
 .header-brand-logo {
-  background: #000;
+  background: var(--accent-color);
   color: #fff;
   width: 24px;
   height: 24px;
@@ -372,8 +399,8 @@
 
 /* Beautiful Avatars */
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -383,12 +410,13 @@
 }
 
 .avatar.assistant {
-  background: #000;
+  background: #ffffff;
+  border: 1px solid var(--glass-border);
   color: #fff;
 }
 
 .avatar.user {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 105, 200, 0.06);
   color: var(--text-secondary);
 }
 
@@ -411,7 +439,7 @@
 
 /* User Bubble: Sleek Premium Charcoal Dark Mode Pill */
 .message-row.user .message-bubble {
-  background: #111216;
+  background: var(--accent-color);
   color: #ffffff;
   border-top-right-radius: 4px;
 }
@@ -420,12 +448,12 @@
   color: #ffffff;
 }
 
-/* Assistant Bubble: Clean white glassmorphism with borders */
+/* Assistant Bubble: Clean dark glassmorphism with borders */
 .message-row.assistant .message-bubble {
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--glass-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--glass-border);
   color: var(--text-primary);
   border-top-left-radius: 4px;
 }
@@ -435,7 +463,7 @@
   display: inline-block;
   width: 6px;
   height: 15px;
-  background: #000;
+  background: var(--text-primary);
   margin-left: 4px;
   animation: blinkCursor 0.8s infinite;
   vertical-align: middle;
@@ -466,12 +494,12 @@
 
 .message-bubble strong {
   font-weight: 600;
-  color: #000;
+  color: var(--text-primary);
 }
 
 /* Interactive Clickable Links (emails, phone, urls) inside message bubble */
 .message-bubble a.interactive-link {
-  color: #0066cc; /* Beautiful readable corporate blue */
+  color: var(--accent-light); /* corporate blue for light backgrounds */
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -480,13 +508,13 @@
 }
 
 .message-row.assistant .message-bubble a.interactive-link:hover {
-  color: #004499;
+  color: var(--accent-hover);
   text-decoration-thickness: 1.5px;
 }
 
 /* For user bubble (dark background), links should be light blue/white and highly readable */
 .message-row.user .message-bubble a.interactive-link {
-  color: #8bbfff; /* High-contrast light blue for dark bubble! */
+  color: #e2f1ff; /* High-contrast light blue for dark bubble! */
 }
 
 .message-row.user .message-bubble a.interactive-link:hover {
@@ -577,31 +605,107 @@
   }
 }
 
+
+
 /* Responsive adjustments */
 @media (max-width: 600px) {
-  .hero-title {
-    font-size: 2.2rem;
+  .hero-logo {
+    font-size: 1.1rem;
+    gap: 8px;
   }
   
-  .app-container {
-    padding: 16px;
+  .logo-img-brand {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .hero-section {
+    margin-bottom: 24px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 16px;
   }
   
   .chat-pill-card {
     border-radius: 20px;
     padding: 12px 14px;
+    gap: 8px;
+  }
+  
+  .pill-row-bottom {
+    padding-bottom: 4px;
   }
   
   .active-header {
-    padding: 16px 20px;
+    padding: 12px 16px;
+  }
+  
+  .header-brand-logo-img {
+    width: 28px;
+    height: 28px;
   }
   
   .chat-thread-container {
-    padding-top: 80px;
-    padding-bottom: 120px;
+    padding: 16px 12px;
+  }
+  
+  .message-bubble {
+    max-width: 85%;
+    padding: 10px 14px;
   }
   
   .chatting-input-container {
-    padding: 12px;
+    padding: 8px 12px;
   }
+}
+
+/* Very Small Mobile Screens (e.g. iPhone SE / screens under 400px width) */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .hero-logo {
+    font-size: 1rem;
+  }
+  
+  .logo-img-brand {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Height-based media query to allow scrolling on small screen heights, keeping centering on tall screens */
+@media (max-height: 760px) {
+  .app-container {
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 24px 12px;
+  }
+  .app-container.chat-mode {
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0;
+  }
+}
+
+/* Custom Brand Logo Images Styles */
+.logo-img-brand {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.header-brand-logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.logo-icon-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }

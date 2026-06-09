@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Search, ArrowUp, Plus, ArrowUpRight, Globe, Cpu, Sparkles, Code2, Users } from 'lucide-react'
 import './App.css'
+import brandLogo from './cubemoons logo1.png'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
@@ -210,7 +211,7 @@ export default function App() {
             setMessages([])
             setIsChatting(false)
           }}>
-            <div className="header-brand-logo">C</div>
+            <img src={brandLogo} alt="Cubemoons Logo" className="header-brand-logo-img" />
             <span>CubeAI</span>
           </a>
           <a href="https://cubemoons.com/" target="_blank" rel="noopener noreferrer" className="visit-website-link">
@@ -227,9 +228,7 @@ export default function App() {
         <section className="hero-section">
           <div className="hero-logo-wrapper">
             <div className="hero-logo">
-              <svg className="logo-icon" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <img src={brandLogo} alt="Cubemoons Logo" className="logo-img-brand" />
               <span>CubeAI</span>
             </div>
           </div>
@@ -256,9 +255,7 @@ export default function App() {
             <div key={idx} className={`message-row ${msg.role}`}>
               {msg.role === 'assistant' && (
                 <div className="avatar assistant">
-                  <svg className="logo-icon-svg" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                  </svg>
+                  <img src={brandLogo} alt="CubeAI" className="logo-icon-img" />
                 </div>
               )}
               <div className="message-bubble">
@@ -266,7 +263,7 @@ export default function App() {
               </div>
               {msg.role === 'user' && (
                 <div className="avatar user">
-                  <Users size={14} />
+                  <Users size={18} />
                 </div>
               )}
             </div>
@@ -276,9 +273,7 @@ export default function App() {
           {activeStreamingIndex !== null && streamingText && (
             <div className="message-row assistant streaming">
               <div className="avatar assistant">
-                <svg className="logo-icon-svg" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                </svg>
+                <img src={brandLogo} alt="CubeAI" className="logo-icon-img" />
               </div>
               <div className="message-bubble">
                 {renderMessageContent(streamingText, true)}
@@ -290,9 +285,7 @@ export default function App() {
           {isLoading && (
             <div className="message-row assistant loading">
               <div className="avatar assistant">
-                <svg className="logo-icon-svg" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                </svg>
+                <img src={brandLogo} alt="CubeAI" className="logo-icon-img" />
               </div>
               <div className="message-bubble">
                 <div className="typing-indicator">
@@ -363,8 +356,8 @@ export default function App() {
             className="watch-trailer-btn"
           >
             <img 
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=100&auto=format&fit=crop&q=60" 
-              alt="Cubemoons showreel thumbnail" 
+              src={brandLogo} 
+              alt="Cubemoons Logo" 
             />
             <span>Explore Cubemoons website</span>
             <ArrowUpRight size={14} style={{ opacity: 0.6 }} />

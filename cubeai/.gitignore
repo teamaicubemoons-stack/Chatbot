@@ -1,0 +1,16 @@
+# Node dependencies
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment configuration (Secret scanning protection)
+.env
+.env.development
+.env.production
