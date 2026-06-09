@@ -10,10 +10,10 @@ export default function App() {
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isChatting, setIsChatting] = useState(false)
-  
+
   // Ref for scrolling
   const messagesEndRef = useRef(null)
-  
+
   // Simulated streaming/typewriter effect state
   const [streamingText, setStreamingText] = useState('')
   const [activeStreamingIndex, setActiveStreamingIndex] = useState(null)
@@ -43,7 +43,7 @@ export default function App() {
 
     const newUserMessage = { role: 'user', content: text }
     const updatedMessages = [...messages, newUserMessage]
-    
+
     setMessages(updatedMessages)
     setInput('')
     setIsLoading(true)
@@ -67,15 +67,15 @@ export default function App() {
       }
 
       const data = await response.json()
-      
+
       // Simulate real-time word-by-word streaming stream for superior UI feel
       const words = data.content.split(' ')
       let currentWordIndex = 0
       let currentText = ''
-      
+
       const assistantMessageIndex = updatedMessages.length
       setActiveStreamingIndex(assistantMessageIndex)
-      
+
       setIsLoading(false) // turn off loader as stream starts
 
       const timer = setInterval(() => {
@@ -95,7 +95,7 @@ export default function App() {
     } catch (error) {
       console.error(error)
       setIsLoading(false)
-      
+
       // Fallback CubeAI response if backend is offline
       const errorMessage = `Honestly, I had a slight connection hiccup trying to reach my backend brain. Make sure the backend service is running and accessible at ${API_URL}! Let's get that up and try again.`
       setMessages(prev => [...prev, { role: 'assistant', content: errorMessage }])
@@ -116,10 +116,10 @@ export default function App() {
 
     // Split content by lines
     const lines = content.split('\n')
-    
+
     return lines.map((line, lineIndex) => {
       const isLastLine = lineIndex === lines.length - 1
-      
+
       // Check if line is a list item
       if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
         const textContent = line.replace(/^[\-\*]\s+/, '')
@@ -132,7 +132,7 @@ export default function App() {
           </ul>
         )
       }
-      
+
       // Regular paragraph
       return (
         <p key={lineIndex}>
@@ -232,7 +232,7 @@ export default function App() {
               <span>CubeAI</span>
             </div>
           </div>
-          
+
           <h1 className="hero-title">
             What are we building<br />today?
           </h1>
@@ -296,7 +296,7 @@ export default function App() {
               </div>
             </div>
           )}
-          
+
           <div ref={messagesEndRef} />
         </div>
       )}
@@ -309,29 +309,29 @@ export default function App() {
           {/* Row 1: Search icon, main textfield, and send button circle */}
           <div className="pill-row-top">
             <Search className="search-icon-gray" />
-            <input 
-              type="text" 
-              className="chat-input-field" 
-              placeholder="Hey CubeAI..." 
+            <input
+              type="text"
+              className="chat-input-field"
+              placeholder="Hey CubeAI..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               disabled={isLoading && activeStreamingIndex === null}
             />
-            <button 
-              className="send-btn-circle" 
+            <button
+              className="send-btn-circle"
               onClick={() => handleSend()}
               disabled={(isLoading && activeStreamingIndex === null) || !input.trim()}
             >
               <ArrowUp size={16} />
             </button>
           </div>
-          
+
           {/* Row 2: Context options tags (clickable to quick trigger) */}
           <div className="pill-row-bottom">
             {suggestions.map((sug, idx) => (
-              <button 
-                key={idx} 
+              <button
+                key={idx}
                 className="context-pill-option"
                 onClick={() => handleSend(sug.text)}
                 disabled={isLoading}
@@ -349,15 +349,15 @@ export default function App() {
          ========================================================================== */}
       {!isChatting && (
         <div className="hero-subtext">
-          <a 
-            href="https://cubemoons.com/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://cubemoons.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="watch-trailer-btn"
           >
-            <img 
-              src={brandLogo} 
-              alt="Cubemoons Logo" 
+            <img
+              src={brandLogo}
+              alt="Cubemoons Logo"
             />
             <span>Explore Cubemoons website</span>
             <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
